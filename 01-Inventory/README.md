@@ -55,3 +55,47 @@ root@master:~/ansible-sony-17-July-2023/01-Inventory#
 ```
 
 
+### Let's excute the operation againt individual hosts 
+```
+ansible 172.31.0.101 -i hosts -m ping -u vagrant -k
+```
+
+### Let's excute the operation againt a group [web] or [db] hosts 
+```
+ansible web -i hosts -m ping -u vagrant -k
+```   
+```
+ansible db -i hosts -m ping -u vagrant -k
+```
+
+### Let's excute the operation on the common host btw the group [web] & [prod]:
+```
+ansible 'web:&prod' -i hosts -m ping -u vagrant -k
+```
+```
+ansible 'db:&prod' -i hosts -m ping -u vagrant -k
+```
+```
+ansible 'db:&uat' -i hosts -m ping -u vagrant -k
+```
+
+### Let's excute the operation on all host in the group [uat] & [prod]:
+```
+ansible 'prod:uat' -i hosts -m ping -u vagrant -k
+```
+
+
+### Let's excute the operation on all host in the group [uat] & [prod] & exclude the hosts belongs to ansible group:
+```
+ansible 'prod:uat:!ansible' -i hosts -m ping -u vagrant -k
+```
+
+### Let's excute the operation on group of groups [dc] 
+```
+ansible dc -i hosts -m ping -u vagrant -k
+```
+
+### Let's check the dc group ansible authentication variables:  
+```
+ansible dc -i hosts -m ping
+````
