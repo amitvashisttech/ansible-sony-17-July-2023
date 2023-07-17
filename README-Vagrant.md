@@ -12,6 +12,12 @@ cd devops-lab/vagrant-setup/devops
 ```
 vagrant status 
 ```
+```
+master                    running (virtualbox)
+worker1                   running (virtualbox)
+worker2                   running (virtualbox)
+```
+
 ### 4. Bring up the VMs
 ```
 vagrant up master
