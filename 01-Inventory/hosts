@@ -25,3 +25,7 @@
 
 [ansible]
 172.31.0.100
+
+[dc:children]
+web
+db
