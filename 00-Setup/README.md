@@ -30,3 +30,14 @@ vagrant ssh master
 ```
 sudo su - 
 ```
+
+### 6. Install Ansible on Debain Node
+```
+apt-get update 
+apt-get install -y ansible 
+```
+
+### 7. Check Ansible Installation 
+```
+ansible --version 
+```
