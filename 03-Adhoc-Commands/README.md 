@@ -1,0 +1,58 @@
+```
+2071  cd 03-Adhoc-Commands/
+ 2072  ls
+ 2073  cp -rf ../01-Inventory/hosts . 
+ 2074  ls
+ 2075  cat hosts 
+ 2076  ls
+ 2077  vim hosts 
+ 2078  ls
+ 2079  ansible dc -i hosts -m ping 
+ 2080  vim hosts 
+ 2081  ansible dc -i hosts -m ping 
+ 2082  ls
+ 2083  vim hosts 
+ 2084  ansible dc -i hosts -m ping 
+ 2085  ansible-doc -l 
+ 2086  ansible-doc ping 
+ 2087  df -h 
+ 2088  uname -a 
+ 2089  ls
+ 2090  ansible dc -i hosts -m command -a 'df -h' 
+ 2091  ansible dc -i hosts -m command -a 'df -hTP' 
+ 2092  ansible dc -i hosts -m command -a 'uname -a' 
+ 2093  ansible dc -i hosts -m command -a 'uptime' 
+ 2094  ls
+ 2095  cat /etc/os-release 
+ 2096  ansible dc -i hosts -m command -a 'cat /etc/os-release' 
+ 2097  netstat -tulnp 
+ 2098  ansible dc -i hosts -m command -a 'netstat -tulnp' 
+ 2099  ansible dc -i hosts -m command -a 'netstat -tulnp' > 1.txt 
+ 2100  ls
+ 2101  cat 1.txt 
+ 2102  rm -rf 1.txt 
+ 2103  ls
+ 2104  cat /etc/*-release 
+ 2105  cat /etc/os-release 
+ 2106  cat /etc/*-release 
+ 2107  ls
+ 2108  ansible dc -i hosts -m command -a 'cat /etc/*-release' 
+ 2109  cat /etc/*-release 
+ 2110  ansible dc -i hosts -m command -a 'cat /etc/*-release' 
+ 2111  ansible dc -i hosts -m command -a 'echo "Welcome to ansible Adhoc Commands"' 
+ 2112  ansible dc -i hosts -m command -a 'echo "Welcome to ansible Adhoc Commands" > /tmp/hello.txt' 
+ 2113  ansible dc -i hosts -m command -a 'cat /tmp/hello.txt' 
+ 2114  ansible dc -i hosts -m command -a 'cat /etc/*-release' 
+ 2115  ansible dc -i hosts -m shell -a 'cat /etc/*-release' 
+ 2116  ansible dc -i hosts -m shell -a 'echo "Welcome to ansible Adhoc Commands" > /tmp/hello.txt' 
+ 2117  ansible dc -i hosts -m command -a 'cat /tmp/hello.txt' 
+ 2118  ansible dc -i hosts -m shell -a 'cat /tmp/hello.txt' 
+ 2119  ansible dc -i hosts -m shell -a 'sed -i "s/ansible/Ansible/g" /tmp/hello.txt' 
+ 2120  ansible dc -i hosts -m shell -a 'cat /tmp/hello.txt' 
+ 2121  ansible-doc  apt 
+ 2122  ansible dc -i hosts -m apt -a "name=tree"
+ 2123  ansible dc -i hosts -m apt -a "name=tree state=absent"
+ 2124  ansible dc -i hosts -m apt -a "name=tree state=absent" -b 
+ 2125  ansible dc -i hosts -m apt -a "name=tree state=absent" -b -u vagrant -k 
+
+ ```
