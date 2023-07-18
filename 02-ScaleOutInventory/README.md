@@ -59,3 +59,10 @@ ansible all -i prod_hosts -m user -a "name={{username}} password=12345" -b -u va
 ansible all -i prod_hosts -m user -a "name={{username}} password=12345" -b -u vagrant -k 
 
 -> out of 20, on 17 hosts - all_user, the ci belogs db group [102] will have username : db_user , the ci belogs web group will have username : web_user ; max precedence will given to host variable over indvidual group & all group, as a result username variable values is going to be : ansible_user
+
+
+
+commands: 
+```
+ansible all -i hosts -m user -a "name={{username}} password=12345"  -u vagrant -k -b
+```
