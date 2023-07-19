@@ -34,10 +34,13 @@
   - debug: var=result
 
   - debug: msg="Unable to locate the info file"
-    when: result.failed == "true"
+    when: result is failed
     ignore_errors: yes 
 
+  - debug: msg="Able to locate the info file"
+    when: result is succeeded
+    ignore_errors: yes 
      
   - name: Deploy web page
     copy: src=files/info.html dest=/var/www/html/info.html
-    when: result|failed
+    when: result is failed
