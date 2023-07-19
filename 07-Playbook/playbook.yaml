@@ -1,0 +1,8 @@
+---
+# This is going to my first playbook
+# My First Play
+
+- hosts: web
+  tasks:
+  - name: Install Apache Packages 
+    apt: name=apache2 state=present

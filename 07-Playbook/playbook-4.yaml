@@ -1,0 +1,28 @@
+---
+# Multiple Play Playbook
+# My First Play
+
+- hosts: web
+  name : "Webserver Deployment"
+  tasks:
+  - name: Install Apache Packages 
+    apt: name=apache2 state=present
+
+  - name: Start Apache Service
+    service: name=apache2 state=started 
+
+
+
+- hosts: all
+  name : "Disable Firewall"
+  tasks:
+  - name: Disable Firewall Service 
+    service: name=ufw state=stopped
+
+
+
+- hosts: 'web:&prod:!ansible'
+  name : "Install Tree Deployment"
+  tasks:
+  - name: Install Tree Packages 
+    apt: name=tree state=present
