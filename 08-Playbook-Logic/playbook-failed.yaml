@@ -25,3 +25,19 @@
     register: username 
 
   - debug: var=username
+
+  - name: Check the web info exist or not
+    command: ls /var/www/html/info.html
+    register: result
+    ignore_errors: yes 
+
+  - debug: var=result
+
+  - debug: msg="Unable to locate the info file"
+    when: result.failed == "true"
+    ignore_errors: yes 
+
+     
+  - name: Deploy web page
+    copy: src=files/info.html dest=/var/www/html/info.html
+    when: result|failed
