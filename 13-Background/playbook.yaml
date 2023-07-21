@@ -1,0 +1,86 @@
+---
+- hosts: web
+  name : "Webserver Deployment"
+  vars:
+    doc_root: "/var/www/html"
+    user: "Amit Vashist"
+    http_port: 80
+
+  tasks:
+  - name: Install Apache Packages 
+    apt: name=apache2 state=present
+    when: ansible_os_family == "Debian"
+
+ 
+  - name: Install Nettools Packages 
+    apt: name=net-tools state=present
+    when: ansible_os_family == "Debian"
+
+  - name: Install HTTPD Packages 
+    yum: name=httpd state=present
+    when: ansible_os_family == "RedHat"
+
+  - name: Start Apache Service
+    service: name=apache2 state=started 
+
+  - name: Start HTTPD Service
+    service: name=httpd state=started 
+    when: ansible_os_family == "RedHat"
+
+  - name: Deploy Custom Apache Configuration 
+    template: src=templates/apache2.conf.j2 dest=/etc/apache2/apache2.conf
+
+  - name: Deploy Custom Apache Port Configuration 
+    template: src=templates/ports.conf.j2 dest=/etc/apache2/ports.conf
+    notify: 
+      - Restart Apache
+
+  - name: Force to Run Handlers
+    meta: flush_handlers
+
+  - name: Check the Web Application Port No. 
+    shell: 'netstat -tulnp | grep -i {{http_port}}'
+
+
+  - name: Deploy Custom Index Web Page 
+    copy: src=files/index.html dest={{doc_root}}/index.html
+
+
+  - name: Check who am I
+    command: whoami
+    register: username 
+
+  - debug: var=username
+
+  - name: Check the web info exist or not
+    command: ls {{doc_root}}/info1.html
+    register: result
+    ignore_errors: yes 
+
+  - debug: var=result
+
+  - debug: msg="Unable to locate the info file"
+    when: result is failed
+    ignore_errors: yes 
+
+  - debug: msg="Able to locate the info file"
+    when: result is succeeded
+    ignore_errors: yes
+
+  - name: Download BG Image 
+    get_url: url="https://freepngimg.com/thumb/super_mario/30917-5-super-mario-kart-clipart.png" dest={{doc_root}}/back.jpg mode=0755
+     
+  - name: Deploy web template page
+    template: src=templates/info.j2 dest={{doc_root}}/info1.html
+    notify: 
+      - Restart Apache
+      - amit
+
+
+
+  handlers:
+  - name: Restart Apache
+    service: name=apache2 state=restarted 
+    when: ansible_os_family == "Debian"
+  - name: amit
+    shell: 'echo "Hello Handlers {{ansible_hostname}}" >> /tmp/handlers.txt'
