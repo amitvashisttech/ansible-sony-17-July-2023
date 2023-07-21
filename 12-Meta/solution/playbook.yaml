@@ -4,11 +4,16 @@
   vars:
     doc_root: "/var/www/html"
     user: "Amit Vashist"
-    http_port: 8081
+    http_port: 8085
 
   tasks:
   - name: Install Apache Packages 
     apt: name=apache2 state=present
+    when: ansible_os_family == "Debian"
+
+ 
+  - name: Install Nettools Packages 
+    apt: name=net-tools state=present
     when: ansible_os_family == "Debian"
 
   - name: Install HTTPD Packages 
@@ -29,12 +34,17 @@
     template: src=templates/ports.conf.j2 dest=/etc/apache2/ports.conf
     notify: 
       - Restart Apache
-      - amit
 
+  - name: Force to Run Handlers
+    meta: flush_handlers
+
+  - name: Check the Web Application Port No. 
+    shell: 'netstat -tulnp | grep -i {{http_port}}'
 
 
   - name: Deploy Custom Index Web Page 
     copy: src=files/index.html dest={{doc_root}}/index.html
+
 
   - name: Check who am I
     command: whoami
@@ -59,6 +69,9 @@
      
   - name: Deploy web template page
     template: src=templates/info.j2 dest={{doc_root}}/info1.html
+    notify: 
+      - Restart Apache
+      - amit
 
 
 

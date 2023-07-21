@@ -4,11 +4,16 @@
   vars:
     doc_root: "/var/www/html"
     user: "Amit Vashist"
-    http_port: 8081
+    http_port: 8083
 
   tasks:
   - name: Install Apache Packages 
     apt: name=apache2 state=present
+    when: ansible_os_family == "Debian"
+
+ 
+  - name: Install Nettools Packages 
+    apt: name=net-tools state=present
     when: ansible_os_family == "Debian"
 
   - name: Install HTTPD Packages 
@@ -31,6 +36,8 @@
       - Restart Apache
       - amit
 
+  - name: Check the Web Application Port No. 
+    shell: 'netstat -tulnp | grep -i {{http_port}}'
 
 
   - name: Deploy Custom Index Web Page 
