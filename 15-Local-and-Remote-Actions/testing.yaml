@@ -1,0 +1,5 @@
+---
+
+- hosts: 172.31.0.100
+  roles:
+  - firewall
