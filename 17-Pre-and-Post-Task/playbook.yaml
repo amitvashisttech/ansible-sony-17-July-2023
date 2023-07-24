@@ -1,0 +1,13 @@
+---
+
+- hosts: web
+  vars: 
+    change_id: "CH00000002"
+  pre_tasks:
+  - include: roles/pre-and-post-task/tasks/pre-task.yaml
+  roles:
+  - server-common
+  - firewall
+  post_tasks:
+  - include: roles/pre-and-post-task/tasks/post-task.yaml
+
