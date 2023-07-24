@@ -1,0 +1,6 @@
+---
+
+- hosts: all
+  name: "Server Common Deployment"
+  roles:
+  - server-common
