@@ -1,0 +1,9 @@
+---
+- hosts: all
+  name: "Server Common Deployment"
+  serial:
+  - 1
+  - 5
+  roles:
+  - server-common
+  - motd
