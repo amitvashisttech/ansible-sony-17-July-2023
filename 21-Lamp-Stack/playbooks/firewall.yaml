@@ -1,0 +1,6 @@
+---
+
+- hosts: web
+  name: "FireWall Deployment"
+  roles:
+  - firewall

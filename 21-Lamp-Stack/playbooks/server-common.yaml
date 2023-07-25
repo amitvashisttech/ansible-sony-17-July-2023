@@ -1,0 +1,10 @@
+---
+
+- hosts: all
+  name: "Server Common Deployment"
+  vars:
+    manala_motd_template: "template/dragon.j2"
+    manala_motd_message: "Hey Dragon.!!"
+  roles:
+  - server-common
+  - manala.motd
