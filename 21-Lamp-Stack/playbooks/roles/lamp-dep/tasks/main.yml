@@ -24,8 +24,6 @@
   template: src=templates/my.cnf.j2 dest=/root/.my.cnf
   run_once: true 
 
-
-
 - name: Deploy MySQL Config Updated
   template: src=templates/my.cnf-2.j2 dest=/root/.my.cnf
 
