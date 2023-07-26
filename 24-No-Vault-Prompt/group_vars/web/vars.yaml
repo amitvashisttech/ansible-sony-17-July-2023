@@ -1,0 +1,6 @@
+---
+user: "{{ mysecret_username }}"
+cred: "{{ mysecret_cred }}"
+sitename: "{{ mysecret_sitename }}"
+msg: "Welcome to Ansible Vault Demo" 
+

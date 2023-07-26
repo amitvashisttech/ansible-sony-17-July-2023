@@ -1,0 +1,8 @@
+---
+# vars file for webserver
+
+doc_root: "/var/www/html"
+http_port: 80
+#user: default
+#cred: default
+#sitename: default
