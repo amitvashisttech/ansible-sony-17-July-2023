@@ -1,0 +1,3 @@
+palo_provider:
+  api_key: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  ip_address: "{{ ansible_host }}"
