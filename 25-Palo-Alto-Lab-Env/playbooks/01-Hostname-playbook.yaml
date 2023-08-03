@@ -13,3 +13,8 @@
       panos_mgtconfig:
         provider: '{{ palo_provider }}'
         hostname: '{{ hostname }}'
+
+    - name: Commit 
+      panos_commit_firewall:
+        provider: '{{ palo_provider }}'
+
