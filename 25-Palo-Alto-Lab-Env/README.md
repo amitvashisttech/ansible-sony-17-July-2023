@@ -44,3 +44,20 @@ pip3 install pandevice==0.13
 ```
 ansible-galaxy collection install paloaltonetworks.panos
 ```
+
+
+
+
+
+## Login to PaloAlto VM - Click on PA-EX VM in VMware Workstation
+
+1. Login
+```
+Username: admin 
+Password: Pass@word12345
+```
+
+2. Check the System Info & IP Address of the Firewall
+```
+show system info
+```
