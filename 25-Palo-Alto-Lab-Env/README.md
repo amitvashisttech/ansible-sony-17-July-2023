@@ -61,3 +61,8 @@ Password: Pass@word12345
 ```
 show system info
 ```
+
+3. Now take a duplicate session in cmder & login to firewall.
+```
+ssh admin@ipaddress_of_pa_firewall
+```
