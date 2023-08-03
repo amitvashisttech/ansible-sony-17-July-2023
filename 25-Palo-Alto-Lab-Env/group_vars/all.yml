@@ -1,0 +1,7 @@
+---
+
+configs_dir: ./configs/
+ip_address: "{{ ansible_host }}"
+
+servers: 
+
