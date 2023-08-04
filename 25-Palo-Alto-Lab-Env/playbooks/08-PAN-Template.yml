@@ -10,7 +10,7 @@
   tasks: 
     - name: Create Template Test
       panos_template:
-        provider: '{{ palo_providers }}'
+        provider: '{{ palo_provider }}'
         name: 'hello world'
         description: 'test for Ansible '
 
