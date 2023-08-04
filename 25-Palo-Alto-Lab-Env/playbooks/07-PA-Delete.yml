@@ -8,7 +8,7 @@
     - paloaltonetworks.panos
 
   tasks:
-    - name: Create Server Object
+    - name: Delete Server Address Object - Vmware
       panos_address_object:
         provider: '{{ palo_provider }}'
         name: 'server1'
@@ -16,7 +16,7 @@
         description: 'vmware'
         state: absent
 
-    - name: Create Users Object
+    - name: Delete Server Address Object - User Subnet
       panos_address_object:
         provider: '{{ palo_provider }}'
         name: 'users-subnet'
