@@ -1,0 +1,29 @@
+---
+
+- name: Palo Alto Playbook
+  hosts: palo
+  connection: local
+
+  collections:
+    - paloaltonetworks.panos
+
+  tasks:
+    - name: Create Server Object
+      panos_address_object:
+        provider: '{{ palo_provider }}'
+        name: 'server1'
+        value: '172.16.1.10'
+        description: 'vmware'
+        state: absent
+
+    - name: Create Users Object
+      panos_address_object:
+        provider: '{{ palo_provider }}'
+        name: 'users-subnet'
+        value: '10.10.10.0/24'
+        description: 'users subnet'
+        state: absent
+
+    - name: Commit
+      panos_commit_firewall:
+        provider: '{{ palo_provider }}'
